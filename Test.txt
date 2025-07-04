@@ -1,3 +1,4 @@
 мой тест и он новый
 плюс строка
 new line
+for conflict
