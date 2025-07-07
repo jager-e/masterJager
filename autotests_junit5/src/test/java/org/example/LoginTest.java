@@ -1,5 +1,4 @@
 package org.example;
-import org.junit.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -40,15 +39,14 @@ public class LoginTest {
 //        //получение ссылки на страницу входа из файла настроек
 //        driver.get(ConfProperties.getProperty("loginpage")); }
 
-    //    тестовый метод перезапуска тестов
-    @ExtendWith(RetryExtension.class)
+
 
     @BeforeEach
     public void setup() {
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         startTime = System.currentTimeMillis();
         driver.get(ConfProperties.getProperty("loginpage"));
 
@@ -57,7 +55,7 @@ public class LoginTest {
         profilePage = new ProfilePage(driver);
     }
 
-    @Test
+    @RetryTest(3) // Вот здесь и происходит магия
     public void loginTest() {
         //значение login/password берутся из файла настроек по аналогии с chromedriver
 //и loginpage
