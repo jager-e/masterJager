@@ -33,24 +33,6 @@ public class SearchTest {
     /**
      * осуществление первоначальной настройки
      */
-//    @BeforeClass
-//    public static void setup() {
-//        //определение пути до драйвера и его настройка
-//        System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
-//        //создание экземпляра драйвера
-//        driver = new ChromeDriver();
-//        loginPage = new LoginPage(driver);
-//        profilePage = new ProfilePage(driver);
-//        searchPage = new SearchPage(driver);
-//
-//        //окно разворачивается на полный экран
-//        driver.manage().window().maximize();
-//        //задержка на выполнение теста = 10 сек.
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        //получение ссылки на страницу входа из файла настроек
-//        driver.get(ConfProperties.getProperty("loginpage")); }
-
-
 
     @BeforeEach
     public void setup() {
@@ -104,12 +86,6 @@ public class SearchTest {
         // проверяем, что на странице 0 сущностей
         Assertions.assertEquals(ConfProperties.getProperty("incorrectEntityCount"),entityCountNew);
     }
-
-//    @AfterClass
-//    public static void tearDown() {
-//        profilePage.entryMenu();
-//        profilePage.userLogout();
-//        driver.quit(); }
 
     @AfterEach
     public void tearDown() {

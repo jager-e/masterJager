@@ -1,20 +1,10 @@
 package org.example;
 
-import org.junit.*;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class TagsTest {
     public static LoginPage loginPage;
@@ -28,14 +18,6 @@ public class TagsTest {
     public static void setup() {
         //определение пути до драйвера и его настройка
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
-
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("start-maximized");
-//        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-//        options.setExperimentalOption("useAutomationExtension", false);
-//        driver = new ChromeDriver(options);
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-
         //создание экземпляра драйвера
         driver = new ChromeDriver();
         //окно разворачивается на полный экран
@@ -67,36 +49,8 @@ public class TagsTest {
         driver.get(ConfProperties.getProperty("searchpage"));
     }
 
-//    @Before
-//    public void setup() {
-//        //определение пути до драйвера и его настройка
-//        System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
-//        //создание экземпляра драйвера
-//        driver = new ChromeDriver();
-//        //окно разворачивается на полный экран
-//        driver.manage().window().maximize();
-//        //задержка на выполнение теста = 10 сек.
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
-//        //получение ссылки на страницу входа из файла настроек
-//        driver.get(ConfProperties.getProperty("loginpage"));
-//
-//        // Инициализация страниц
-//        loginPage = new LoginPage(driver);
-//        searchPage = new SearchPage(driver);
-//        profilePage = new ProfilePage(driver);
-//        timerPage = new TimerPage(driver);
-//    }
-
     @RetryTest(3)
     public void TagsTest() throws InterruptedException {
-//        //нажимаем кнопку входа
-//        loginPage.clickloginButton();
-//        //вводим логин
-//        loginPage.inputLogin(ConfProperties.getProperty("login"));
-//        //вводим пароль
-//        loginPage.inputPasswd(ConfProperties.getProperty("password"));
-//        //нажимаем кнопку входа
-//        loginPage.clickloginBtn();
         // Взять и перетащить фильтр
         searchPage.selectFilter();
         // кликнуть на чек бокс
@@ -134,9 +88,6 @@ public class TagsTest {
         searchPage.targetAndClickDeleteTag();
         // запуск таймера
         timerPage.timerNoTags();
-
-        // собираем состояние сущности без метки и проверяем, что метка удалена
-        //        List<String> tagsNoColor = searchPage.getAllNoTagsGPT();
         List<String> tagsNoColor = searchPage.getAllNoTags();
         boolean allNoTagsOk = tagsNoColor.stream().allMatch(ConfProperties.getProperty("colorNoTag")::equals);
         Assertions.assertTrue(allNoTagsOk, "Не все метки удалились");
@@ -145,20 +96,12 @@ public class TagsTest {
 
     @RetryTest(3)
     public void TagTest() throws InterruptedException {
-//        //нажимаем кнопку входа
-//        loginPage.clickloginButton();
-//        //вводим логин
-//        loginPage.inputLogin(ConfProperties.getProperty("login"));
-//        //вводим пароль
-//        loginPage.inputPasswd(ConfProperties.getProperty("password"));
-//        //нажимаем кнопку входа
-//        loginPage.clickloginBtn();
         // Взять и перетащить фильтр
         searchPage.selectFilter();
         // кликнуть на чек бокс
         searchPage.selectCheckboxMarketGPT();
+        // клик, работающий через раз для проверки
 //        searchPage.selectCheckboxMarket();
-//        searchPage.selectCheckboxMarketJS();
         // кликнуть на кнопку принять
         searchPage.clickAplly();
         // кликнуть на кнопку поиск
@@ -183,16 +126,6 @@ public class TagsTest {
         String tagNoColor = searchPage.getTags2();
         Assertions.assertEquals(ConfProperties.getProperty("colorNoTag"), tagNoColor);
     }
-
-
-//    @After
-//    public void exit() {
-//        // тестовый афтер проверки меток
-    ////        searchPage.checkTags();
-//        profilePage.entryMenu();
-//        profilePage.userLogout();
-//        driver.quit();
-//    }
 
     @AfterAll
     public static void tearDown() {

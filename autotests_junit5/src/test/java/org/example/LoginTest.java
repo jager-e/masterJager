@@ -3,8 +3,6 @@ package org.example;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -23,23 +21,6 @@ public class LoginTest {
     /**
      * осуществление первоначальной настройки
      */
-//    @BeforeClass
-//    public static void setup() {
-//        //определение пути до драйвера и его настройка
-//        System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
-//        //создание экземпляра драйвера
-//        driver = new ChromeDriver();
-//        loginPage = new LoginPage(driver);
-//        profilePage = new ProfilePage(driver);
-//
-//        //окно разворачивается на полный экран
-//        driver.manage().window().maximize();
-//        //задержка на выполнение теста = 10 сек.
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        //получение ссылки на страницу входа из файла настроек
-//        driver.get(ConfProperties.getProperty("loginpage")); }
-
-
 
     @BeforeEach
     public void setup() {
@@ -68,7 +49,6 @@ public class LoginTest {
         loginPage.inputPasswd(ConfProperties.getProperty("password"));
         //нажимаем кнопку входа
         loginPage.clickConfermLoginBtn();
-
 //        profilePage.clickuserMenu();
         profilePage.entryMenu();
         //получаем отображаемый логин
@@ -76,12 +56,6 @@ public class LoginTest {
         //и сравниваем его с логином из файла настроек
         Assertions.assertEquals(ConfProperties.getProperty("login"), user);
     }
-
-//    @AfterClass
-//    public static void tearDown() {
-//       profilePage.entryMenu();
-//        profilePage.userLogout();
-//        driver.quit(); }
 
     @AfterEach
     public void tearDown() {

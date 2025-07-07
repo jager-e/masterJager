@@ -1,10 +1,8 @@
 package org.example;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.time.Duration;
 import java.util.List;
 
@@ -50,7 +48,6 @@ public void openlink() {
         // кликнуть на чек бокс
         searchPage.selectCheckboxMarketGPT();
 //        searchPage.selectCheckboxMarket();
-//        searchPage.selectCheckboxMarketJS();
         // кликнуть на кнопку принять
         searchPage.clickAplly();
         // кликнуть на кнопку поиск
@@ -93,7 +90,6 @@ public void openlink() {
         // кликнуть на чек бокс
         searchPage.selectCheckboxMarketGPT();
 //        searchPage.selectCheckboxMarket();
-//        searchPage.selectCheckboxMarketJS();
         // кликнуть на кнопку принять
         searchPage.clickAplly();
         // кликнуть на кнопку поиск
@@ -125,7 +121,6 @@ public void openlink() {
         // кликнуть на чек бокс
         searchPage.selectCheckboxMarketGPT();
 //        searchPage.selectCheckboxMarket();
-//        searchPage.selectCheckboxMarketJS();
         // кликнуть на кнопку принять
         searchPage.clickAplly();
         // кликнуть на кнопку поиск

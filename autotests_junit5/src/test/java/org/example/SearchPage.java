@@ -233,7 +233,6 @@ public class SearchPage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", search);
         js.executeScript("arguments[0].click();", search);
-//        WebElement spinner = (
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='dx-loadindicator-segment-inner']")));
