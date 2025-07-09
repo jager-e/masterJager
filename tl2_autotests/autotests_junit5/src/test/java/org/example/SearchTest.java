@@ -45,6 +45,8 @@ public class SearchTest {
         searchPage = new SearchPage(driver);
         timerPage = new TimerPage(driver);
 
+        driver = new ChromeDriver(conflict);
+
         //окно разворачивается на полный экран
         driver.manage().window().maximize();
         //задержка на выполнение теста = 10 сек.
